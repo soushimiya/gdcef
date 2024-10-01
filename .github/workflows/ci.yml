@@ -1,16 +1,6 @@
 name: CI for GDCEF Godot 4.x
 on:
   workflow_dispatch:
-    branches:
-      - godot-4.x
-  push:
-    branches:
-      - godot-4.x
-    tags:
-      - '*'
-  pull_request:
-    branches:
-      - godot-4.x
 
 jobs:
 
@@ -90,7 +80,7 @@ jobs:
   #############################################################################
   ### Mac
   #############################################################################
-  build_linux:
+  build_mac:
     name: Build on Mac
     runs-on: macos-latest
     steps:
