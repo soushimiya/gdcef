@@ -495,6 +495,16 @@ def copy_cef_assets():
             copyfile(f, build_path)
         for f in glob.glob(os.path.join(S, "locales/*")):
             copyfile(f, locales)
+    elif OSTYPE == "Darwin":
+        # For Mac OS X rename cef_sandbox.a to libcef_sandbox.a since Scons
+        # search library names starting by lib*
+        os.chdir(os.path.join(THIRDPARTY_CEF_PATH, CEF_TARGET))
+        shutil.copyfile("cef_sandbox.a", "libcef_sandbox.a")
+        # Copy the CEFsimple frameworks and resources
+        copyfolder(os.path.join(THIRDPARTY_CEF_PATH,
+                                "build/tests/cefsimple", CEF_TARGET,
+                                "cefsimple.app/Contents/Frameworks"),
+                   os.path.join(build_path, "Frameworks"))
     else:
         fatal("Unknown architecture " + OSTYPE + ": I dunno how to extract CEF artifacts")
 
