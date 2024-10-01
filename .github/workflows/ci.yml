@@ -91,7 +91,6 @@ jobs:
           submodules: true
       - name: Install system packages
         run: |
-          sudo apt-get update
           cd addons/gdcef
           python3 -m pip install -r requirements.txt --break-system-packages
       - name: Compile GDCEF
@@ -101,7 +100,7 @@ jobs:
       - name: Check build
         run: |
           ls cef_artifacts/gdcefSubProcess cef_artifacts/libgdcef.dylb cef_artifacts/libcef.dylb
-          tar -czvf gdcef-artifacts-godot_4-mac_x86_64.tar.gz cef_artifacts
+          tar -czvf gdcef-artifacts-godot_4-macos_x86_64.tar.gz cef_artifacts
       - name: Do release
         if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
         uses: ncipollo/release-action@v1
