@@ -526,7 +526,7 @@ def compile_godot_cpp():
                   "target=" + GODOT_CPP_TARGET,
                   "use_static_cpp=no")
         elif OSTYPE == "Darwin":
-            scons("platform=osx",
+            scons("platform=macos",
                   "macos_arch=" + ARCHI,
                   "target=" + GODOT_CPP_TARGET,
                   "use_static_cpp=no")
